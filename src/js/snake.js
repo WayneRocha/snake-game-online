@@ -5,7 +5,7 @@ const foodColor = 'green';
 let snake = [];
 let food = {};
 let score = 0;
-let direction = 'left';
+let snakeDirection = 'left';
 
 function spawnSnake(){
     snake = [{ x: 10, y: 10 }, { x: 11, y: 10 }];
@@ -51,11 +51,9 @@ function addNewHead(){
         'left': () => newHead.x--,
         'right': () => newHead.x++,
     };
-    
-    if (changeHeadCoordinateFunc[direction]){
-        changeHeadCoordinateFunc[direction]();
-        snake.unshift(newHead);
-    }
+
+    changeHeadCoordinateFunc[snakeDirection]();
+    snake.unshift(newHead);
 }
 function spawnFood(){
     food.x = Math.floor(Math.random() * canva.width);
@@ -74,7 +72,11 @@ function incrementScore(){
 function detectColisions(){
     const snakeHead = snake[0];
     const foodColision = snakeHead.x == food.x && snakeHead.y == food.y;
-    const borderColision = (snakeHead.x >= canva.width || snakeHead.x < 0) || (snakeHead.y >= canva.height || snakeHead.y < 0);
+    const borderColision = [
+        snakeHead.x >= canva.width || snakeHead.x < 0,
+        snakeHead.y >= canva.height || snakeHead.y < 0
+    ].some(condition => condition);
+
     const yourSelfColision = snake.some((snakePart, index) => {
         if (index == 0) return;
         return snakeHead.x == snakePart.x && snakeHead.y == snakePart.y;
@@ -108,8 +110,13 @@ window.addEventListener('keydown', event => {
         's': 'down',
         'd': 'right'
     };
-    console.log(event.key);
-    if (acceptedKeys[event.key])
-        direction = acceptedKeys[event.key];
+    const snakeDirectionInReverseWay = [
+        snakeDirection == 'left' && acceptedKeys[event.key] == 'right',
+        snakeDirection == 'up' && acceptedKeys[event.key] == 'down',
+        snakeDirection == 'right' && acceptedKeys[event.key] == 'left',
+        snakeDirection == 'down' && acceptedKeys[event.key] == 'up'
+    ].some(condition => condition);
+    if (snakeDirectionInReverseWay) return;
+    snakeDirection = acceptedKeys[event.key] || snakeDirection;
 });
 setInterval(gameLoop, 150);
