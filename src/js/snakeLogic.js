@@ -42,7 +42,7 @@ function resetScore(){
     score = 0;
 }
 function incrementScore(){
-    score += 1;
+    score++;
 }
 function detectColisions(){
     const snakeHead = snake[0];
