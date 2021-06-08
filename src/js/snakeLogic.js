@@ -1,7 +1,3 @@
-const canva = document.getElementById("game");
-const context = canva.getContext("2d");
-const snakeColor = 'orange';
-const foodColor = 'green';
 let snake = [];
 let food = {};
 let score = 0;
@@ -9,27 +5,6 @@ let snakeDirection = 'left';
 
 function spawnSnake(){
     snake = [{ x: 10, y: 10 }, { x: 11, y: 10 }];
-}
-function render(){
-    function cleanScreen(){
-        context.clearRect(0, 0, canva.width, canva.height);
-    }
-    function renderSnake(){
-        context.fillStyle = snakeColor;
-        snake.forEach(snakePart => {
-            const {x, y} = snakePart;
-            context.fillRect(x, y, 1, 1);
-        });
-    }
-    function renderFood(){
-        context.fillStyle = foodColor;
-        const {x, y} = food;
-        context.fillRect(x, y, 1, 1);
-    }
-    
-    cleanScreen();
-    renderSnake();
-    renderFood();
 }
 function extendSnake(){
     addNewHead();
@@ -99,24 +74,4 @@ function gameLoop(){
 
 spawnFood();
 spawnSnake();
-window.addEventListener('keydown', event => {
-    const acceptedKeys = {
-        'ArrowLeft': 'left',
-        'ArrowRight': 'right',
-        'ArrowUp': 'up',
-        'ArrowDown': 'down',
-        'w': 'up',
-        'a': 'left',
-        's': 'down',
-        'd': 'right'
-    };
-    const snakeDirectionInReverseWay = [
-        snakeDirection == 'left' && acceptedKeys[event.key] == 'right',
-        snakeDirection == 'up' && acceptedKeys[event.key] == 'down',
-        snakeDirection == 'right' && acceptedKeys[event.key] == 'left',
-        snakeDirection == 'down' && acceptedKeys[event.key] == 'up'
-    ].some(condition => condition);
-    if (snakeDirectionInReverseWay) return;
-    snakeDirection = acceptedKeys[event.key] || snakeDirection;
-});
-setInterval(gameLoop, 150);
+setInterval(gameLoop, 300);
