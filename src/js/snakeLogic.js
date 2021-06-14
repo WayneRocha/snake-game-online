@@ -1,8 +1,15 @@
 let snake = [];
+let snakeSpeed = 150;
 let food = {};
 let score = 0;
 let snakeDirection = 'left';
 
+function saveScoreRecord(score){
+    localStorage.setItem('scoreRecord', score);
+}
+function getScoreRecord(){
+    return localStorage.getItem('scoreRecord');
+}
 function spawnSnake(){
     snake = [{ x: 10, y: 10 }, { x: 11, y: 10 }];
 }
@@ -13,6 +20,18 @@ function extendSnake(){
 function moveSnake(){
     snake.pop();
     addNewHead();
+}
+function setMoreSpeedToSnake(){
+    snakeSpeed = 50;
+    restartGameLoop();
+}
+function setNormalSnakeSpeed(){
+    snakeSpeed = 150;
+    restartGameLoop();
+}
+function restartGameLoop(){
+    clearInterval(gameLoopID);
+    gameLoopID = setInterval(gameLoop, snakeSpeed);
 }
 function addNewHead(){
     const snakeHead = snake[0];
@@ -74,4 +93,4 @@ function gameLoop(){
 
 spawnFood();
 spawnSnake();
-setInterval(gameLoop, 300);
+let gameLoopID = setInterval(gameLoop, snakeSpeed);
