@@ -58,7 +58,3 @@ function render() {
     renderFood();
     renderScore();
 }
-
-if (!window.matchMedia('orientation: portrait')) {
-    canva.setAttribute('height', `${canva.width + 10}`);
-}

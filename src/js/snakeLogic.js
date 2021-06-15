@@ -1,7 +1,9 @@
+let gameLoopID;
 let snake = [];
 let snakeSpeed = 150;
 let food = {};
 let score = 0;
+let record = getScoreRecord() || 0;
 let snakeDirection = 'left';
 
 function saveScoreRecord(score){
@@ -28,10 +30,6 @@ function setMoreSpeedToSnake(){
 function setNormalSnakeSpeed(){
     snakeSpeed = 150;
     restartGameLoop();
-}
-function restartGameLoop(){
-    clearInterval(gameLoopID);
-    gameLoopID = setInterval(gameLoop, snakeSpeed);
 }
 function addNewHead(){
     const snakeHead = snake[0];
@@ -83,7 +81,20 @@ function detectColisions(){
     if (borderColision || yourSelfColision) {
         spawnSnake();
         resetScore();
+        stopGameLoop();
+        hiddenAllMenus();
+        mainMenu.classList.remove('hidden');
     }
+}
+function startGameLoop(){
+    gameLoopID = setInterval(gameLoop, snakeSpeed);
+}
+function stopGameLoop(){
+    clearInterval(gameLoopID);
+}
+function restartGameLoop(){
+    stopGameLoop();
+    startGameLoop();
 }
 function gameLoop(){
     moveSnake();
@@ -93,4 +104,3 @@ function gameLoop(){
 
 spawnFood();
 spawnSnake();
-let gameLoopID = setInterval(gameLoop, snakeSpeed);

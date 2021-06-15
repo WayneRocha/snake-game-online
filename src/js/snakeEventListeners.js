@@ -1,4 +1,4 @@
-// keyBoard listner for game interactions
+// keyBoard listener for game interactions
 window.addEventListener('keydown', event => {
     function snakeMoviments(){
         const acceptedKeys = {
@@ -41,4 +41,41 @@ window.addEventListener('keyup', event => {
     };
     if (acceptedKeys[event.code])
         acceptedKeys[event.code]();
+});
+
+//keyBoard listeners for menu interactions
+const [
+    gameMenu,
+    mainMenu,
+    appearanceMenu,
+    creditsMenu
+] = document.getElementsByClassName('menu');
+const [startBtn, appearanceBtn, creditsBtn] = document.getElementsByClassName('main-menu-options');
+const backArrows = [...document.getElementsByClassName('back')];
+
+function hiddenAllMenus(){
+    gameMenu.classList.add('hidden');
+    mainMenu.classList.add('hidden');
+    appearanceMenu.classList.add('hidden');
+    creditsMenu.classList.add('hidden');
+}
+
+startBtn.addEventListener('click', () => {
+    hiddenAllMenus();
+    gameMenu.classList.remove('hidden');
+    startGameLoop();
+});
+appearanceBtn.addEventListener('click', () => {
+    hiddenAllMenus();
+    appearanceMenu.classList.remove('hidden');
+});
+creditsBtn.addEventListener('click', () => {
+    hiddenAllMenus();
+    creditsMenu.classList.remove('hidden');
+});
+backArrows.forEach(arrow => {
+    arrow.addEventListener('click', () => {
+        hiddenAllMenus();
+        mainMenu.classList.remove('hidden');
+    });
 });

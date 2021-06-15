@@ -4,40 +4,104 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="js/snakeEvents.js" defer></script>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/snakeEventListeners.js" defer></script>
     <script src="js/snakeView.js" defer></script>
     <script src="js/snakeLogic.js" defer></script>
     <title>Snake game</title>
 </head>
 <body>
-    <div>
-        <canvas width="20" height="20" id="game-canva"></canvas>
-        <div class="menus" id="initial-menu"></div>
-        <div class="menus" id="appearence-menu"></div>
-        <div class="menus" id="final-menu"></div>
-    </div>
-    <style>
-        body{
-            overflow: hidden;
-            width: 100vw;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background-color: rgb(3, 3, 3);
-        }
-        canvas{
-            height: 70vh;
-            border: 2px solid black;
-            image-rendering: pixelated;
-            color: #6dc01a;
-        }
-        @media (orientation: portrait){
-            canvas {
-                width: 90vw;
-                height: auto;
-            }
-        }
-    </style>
+    <main>
+        <canvas class="menu hidden" width="20" height="20" id="game-canva">
+            Habilite o JavaScript para que a pagina funcione
+        </canvas>
+        <div class="menu" id="initial-menu">
+            <div>
+                <div>
+                    <div>
+                        <h1 id="title">SNAKE</h1>
+                    </div>
+                    <div>
+                        <div class="snake-img">
+                            <div class="snake"></div>
+                            <div class="food"></div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <nav>
+                        <ul>
+                            <li><button class="main-menu-options">start</button></li>
+                            <li><button class="main-menu-options">appearance</button></li>
+                            <li><button class="main-menu-options">credits</button></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+        <div class="menu hidden" id="appearence-menu">
+            <div>
+                <div class="back"></div>
+                <div class="snake-img">
+                    <div class="snake"></div>
+                    <div class="food"></div>
+                </div>
+                <div id="snake-color-choice">
+                    <div>
+                        <span>Snake</span>
+                    </div>
+                    <div>
+
+                    </div>
+                </div>
+                <div id="food-color-choice">
+                    <div>
+                        <span>Food</span>
+                    </div>
+                    <div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="menu hidden" id="credit-menu">
+            <div>
+                <div class="back"></div>
+                <div id="creators">
+                    <div>
+                        <div id="original">
+                            <span>Original Creator</span>
+                            <span>Taneli Armanto</span>
+                        </div>
+                        <div id="Remix">
+                            <span>Remix creator</span>
+                            <span>Wayne Rocha</span>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <nav>
+                        <ul id="social-medias">
+                            <li>
+                                <a href="https://github.com/WayneRocha" target="_blank" rel="noopener noreferrer">
+                                    <img src="" alt="Github" title="GitHub">
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://www.linkedin.com/in/wayne-andr%C3%A9-421004204/" target="_blank" rel="noopener noreferrer">
+                                    <img src="" alt="linkedIn" title="LinkedIn">
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://www.youtube.com/channel/UCXojl1lF6TLP0qM8B1eCh2Q" target="_blank" rel="noopener noreferrer">
+                                    <img src="" alt="youtube channel" title="youtube channel">
+                                </a> 
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </main>
 </body>
 </html>
