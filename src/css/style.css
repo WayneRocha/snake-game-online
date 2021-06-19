@@ -1,7 +1,9 @@
 @charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+
 
 :root{
-    --horizontal-canvas-height: 50vw;
+    --horizontal-canvas-height: 50vmax;
     --horizontal-canvas-width: auto;
     --portrait-canvas-height: auto;
     --portrait-canvas-width: 100vw;
@@ -39,25 +41,75 @@ ul{
     position: absolute;
     top: 0;
     left: 0;
-    background-color: rgb(175, 167, 95);
+    background-color: rgb(206, 197, 122);
 }
 .hidden{
     display: none;
 }
 .back::after{
     content: '⬅';
+    font-size: 2rem;
+    padding-left: 5%;
     width: 50px;
     height: 50px;
+    position: absolute;
+    top: 0;
+    left: 0;
 }
-#initial-menu{
+#initial-menu div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 5%;
+    height: 70%;
+}
+#game-options li{
+    text-align: center;
+    margin-top: 5%;
+    margin-right: 20%;
+}
+#social-medias{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+.social-media-icons{
+    width: 50px;
+}
+.main-menu-options{
+    width: 130%;
+}
+#title, button{
+    font-family: 'VT323', monospace;
+}
+button{
+    font-size: 1.5rem;
+}
+#title{
+    margin-top: 5vh;
+    font-size: 7vmax;
+}
+#creators{
+    font-family: 'VT323', monospace;
+    font-size: 2rem;
+    margin-bottom: 10%;
+}
+#creators div{
+    padding: 5%;
+}
+#creators div div{
+    text-align: center;
+    margin-bottom: 5%;
+    display: flex;
+    flex-direction: column;
+}
+#original span:first-child,
+#remix span:first-child{
+    font-size: 2.3rem;
+    font-weight: bold;
+}
 
-}
-#appearence-menu{
-
-}
-#final-menu{
-
-}
 @media (orientation: portrait){
     main {
         width: var(--portrait-canvas-width);
