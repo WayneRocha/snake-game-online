@@ -1,8 +1,8 @@
 const canva = document.getElementById("game-canva");
 const context = canva.getContext("2d");
 const appearance = {
-    snakeColor: 'black',
-    foodColor: 'green',
+    snakeColor: '#000000',
+    foodColor: '#0BD904',
     backgrounds: {
         selected: 'default',
         default: [

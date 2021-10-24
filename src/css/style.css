@@ -22,10 +22,13 @@ body{
     background-color: gray;
     box-sizing: border-box;
 }
+
+/* game */
 body main{
     height: var(--horizontal-canvas-height);
     width: var(--horizontal-canvas-height);
     position: relative;
+    font-family: 'VT323', monospace;
 }
 canvas{
     height: 100%;
@@ -35,6 +38,11 @@ canvas{
 ul{
     list-style: none;
 }
+button{
+    font-size: 1.5rem;
+}
+
+/* main screen */
 .menu{
     width: 100%;
     height: 100%;
@@ -69,26 +77,55 @@ ul{
     margin-top: 5%;
     margin-right: 20%;
 }
-#social-medias{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-}
-.social-media-icons{
-    width: 50px;
-}
 .main-menu-options{
     width: 130%;
 }
 #title, button{
     font-family: 'VT323', monospace;
 }
-button{
-    font-size: 1.5rem;
-}
 #title{
     margin-top: 5vh;
     font-size: 7vmax;
+}
+
+/* apearence screen */
+.appearance-menu {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: space-around;
+    align-items: center;
+}
+.appearance-picker {
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: row;
+    width: 100%;
+}
+.appearance-menu p{
+    font-size: 2rem;
+}
+.color-picker-item {
+    width: 3rem;
+    height: 3rem;
+    background-color: aqua;
+}
+.color-picker-item.selected, .wolrd-picker-item.selected {
+    border: 4px solid green;
+}
+.wolrd-picker-item {
+    width: 80px;
+}
+
+/* credits screen */
+#social-medias{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    height: max-content;
+}
+.social-media-icons{
+    width: 3em;
 }
 #creators{
     font-family: 'VT323', monospace;

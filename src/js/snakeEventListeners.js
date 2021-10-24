@@ -79,3 +79,28 @@ backArrows.forEach(arrow => {
         mainMenu.classList.remove('hidden');
     });
 });
+
+//appearance listeners
+const selectableItems = document.querySelectorAll('[data-game-appearance-selector]');
+
+selectableItems.forEach(item => {
+    item.addEventListener('click', ({target}) => {
+        const selectorType = target.getAttribute('data-game-appearance-selector');
+        const changeGameProperty = () => {
+            const selectorActions = {
+                'snake': () => appearance.snakeColor = target.getAttribute('data-color'),
+                'fruit': () => appearance.foodColor = target.getAttribute('data-color'),
+                'wolrd': () => appearance.backgrounds.selected = target.getAttribute('data-game-world'),
+            };
+            selectorActions[selectorType]();
+        };
+        const selectItem = () => {
+            const itensOfCategory = document.querySelectorAll(`[data-game-appearance-selector="${selectorType}"]`);
+            itensOfCategory.forEach(item => item.classList.remove('selected'));
+            target.classList.add('selected');
+        };
+
+        changeGameProperty();
+        selectItem();
+    });
+})
