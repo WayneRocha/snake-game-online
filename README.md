@@ -1,2 +1,1 @@
-# snake-game-online
-> ## snake game in a website
+# snake-game-online 2021
